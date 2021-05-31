@@ -1,0 +1,6 @@
+framework module Pods_cl2_quiroz {
+  umbrella header "Pods-cl2_quiroz-umbrella.h"
+
+  export *
+  module * { export * }
+}

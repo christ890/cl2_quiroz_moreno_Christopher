@@ -3,17 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		182C92D1266556CD00B49EDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C92D0266556CD00B49EDB /* AppDelegate.swift */; };
 		182C92D3266556CD00B49EDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C92D2266556CD00B49EDB /* SceneDelegate.swift */; };
-		182C92D5266556CD00B49EDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C92D4266556CD00B49EDB /* ViewController.swift */; };
+		182C92D5266556CD00B49EDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C92D4266556CD00B49EDB /* LoginViewController.swift */; };
 		182C92D8266556CD00B49EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182C92D6266556CD00B49EDB /* Main.storyboard */; };
 		182C92DA266556E700B49EDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182C92D9266556E700B49EDB /* Assets.xcassets */; };
 		182C92DD266556E800B49EDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182C92DB266556E800B49EDB /* LaunchScreen.storyboard */; };
 		18B0B2772665695A008DA016 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18B0B2762665695A008DA016 /* GoogleService-Info.plist */; };
+		18B0B29A2665839F008DA016 /* UIBottonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0B2992665839F008DA016 /* UIBottonExtension.swift */; };
+		18B0B29D26658CAC008DA016 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B0B29C26658CAC008DA016 /* HomeViewController.xib */; };
+		18B0B2A026658D03008DA016 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0B29F26658D03008DA016 /* HomeViewController.swift */; };
+		18B0B2A426658D57008DA016 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0B2A226658D57008DA016 /* RegisterViewController.swift */; };
+		18B0B2A526658D57008DA016 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B0B2A326658D57008DA016 /* RegisterViewController.xib */; };
 		4F7158FED5E2F0AC0D2DC18B /* Pods_cl2_quiroz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F92F49457C4BF89BCD8D746 /* Pods_cl2_quiroz.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +26,17 @@
 		182C92CD266556CD00B49EDB /* cl2_quiroz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cl2_quiroz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		182C92D0266556CD00B49EDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		182C92D2266556CD00B49EDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		182C92D4266556CD00B49EDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		182C92D4266556CD00B49EDB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		182C92D7266556CD00B49EDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		182C92D9266556E700B49EDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		182C92DC266556E800B49EDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182C92DE266556E800B49EDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18B0B2762665695A008DA016 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18B0B2992665839F008DA016 /* UIBottonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBottonExtension.swift; sourceTree = "<group>"; };
+		18B0B29C26658CAC008DA016 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		18B0B29F26658D03008DA016 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18B0B2A226658D57008DA016 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		18B0B2A326658D57008DA016 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		3DC002BDE791EE1C0F9CC894 /* Pods-cl2_quiroz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cl2_quiroz.debug.xcconfig"; path = "Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz.debug.xcconfig"; sourceTree = "<group>"; };
 		8F92F49457C4BF89BCD8D746 /* Pods_cl2_quiroz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cl2_quiroz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FCEB66FE73F84D61305307B /* Pods-cl2_quiroz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cl2_quiroz.release.xcconfig"; path = "Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,12 +77,17 @@
 			children = (
 				182C92D0266556CD00B49EDB /* AppDelegate.swift */,
 				182C92D2266556CD00B49EDB /* SceneDelegate.swift */,
-				182C92D4266556CD00B49EDB /* ViewController.swift */,
+				182C92D4266556CD00B49EDB /* LoginViewController.swift */,
 				182C92D6266556CD00B49EDB /* Main.storyboard */,
 				182C92D9266556E700B49EDB /* Assets.xcassets */,
 				182C92DB266556E800B49EDB /* LaunchScreen.storyboard */,
 				182C92DE266556E800B49EDB /* Info.plist */,
 				18B0B2762665695A008DA016 /* GoogleService-Info.plist */,
+				18B0B2992665839F008DA016 /* UIBottonExtension.swift */,
+				18B0B29C26658CAC008DA016 /* HomeViewController.xib */,
+				18B0B29F26658D03008DA016 /* HomeViewController.swift */,
+				18B0B2A226658D57008DA016 /* RegisterViewController.swift */,
+				18B0B2A326658D57008DA016 /* RegisterViewController.xib */,
 			);
 			path = cl2_quiroz;
 			sourceTree = "<group>";
@@ -83,7 +98,6 @@
 				3DC002BDE791EE1C0F9CC894 /* Pods-cl2_quiroz.debug.xcconfig */,
 				9FCEB66FE73F84D61305307B /* Pods-cl2_quiroz.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -106,6 +120,7 @@
 				182C92C9266556CC00B49EDB /* Sources */,
 				182C92CA266556CC00B49EDB /* Frameworks */,
 				182C92CB266556CC00B49EDB /* Resources */,
+				8A3E41E489C62F76A15019E8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,8 +170,10 @@
 			files = (
 				182C92DD266556E800B49EDB /* LaunchScreen.storyboard in Resources */,
 				18B0B2772665695A008DA016 /* GoogleService-Info.plist in Resources */,
+				18B0B29D26658CAC008DA016 /* HomeViewController.xib in Resources */,
 				182C92DA266556E700B49EDB /* Assets.xcassets in Resources */,
 				182C92D8266556CD00B49EDB /* Main.storyboard in Resources */,
+				18B0B2A526658D57008DA016 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +202,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8A3E41E489C62F76A15019E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -192,9 +226,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182C92D5266556CD00B49EDB /* ViewController.swift in Sources */,
+				18B0B2A026658D03008DA016 /* HomeViewController.swift in Sources */,
+				182C92D5266556CD00B49EDB /* LoginViewController.swift in Sources */,
 				182C92D1266556CD00B49EDB /* AppDelegate.swift in Sources */,
+				18B0B2A426658D57008DA016 /* RegisterViewController.swift in Sources */,
 				182C92D3266556CD00B49EDB /* SceneDelegate.swift in Sources */,
+				18B0B29A2665839F008DA016 /* UIBottonExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
