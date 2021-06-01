@@ -121,6 +121,7 @@
 				182C92CA266556CC00B49EDB /* Frameworks */,
 				182C92CB266556CC00B49EDB /* Resources */,
 				8A3E41E489C62F76A15019E8 /* [CP] Embed Pods Frameworks */,
+				BD3F1F91B3474D37A1E1D5FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +218,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD3F1F91B3474D37A1E1D5FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cl2_quiroz/Pods-cl2_quiroz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

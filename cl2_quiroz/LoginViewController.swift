@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         
         loginButton.saltoAnimacion()
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
         
     }
     
