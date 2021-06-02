@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
         
         navigationItem.setHidesBackButton(true, animated: false)
         
-        llenaDatos()
+        llenaDatos(emailA: email)
         
     }
    
@@ -57,29 +57,30 @@ class HomeViewController: UIViewController {
     }
     
     func addUserDefaults (email: String){
-        
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(email, forKey: "email")
-        userDefaults.synchronize()
+        self.email = email
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "email")
+        defaults.set(email, forKey: "email")
+        defaults.synchronize()
         
     }
     
-    func llenaDatos(){
+    func llenaDatos(emailA : String){
         
-        db.collection("user").document(email).getDocument { (documentSnapshot, error) in
+        db.collection("user").document(emailA).getDocument { (documentSnapshot, error) in
             if let document = documentSnapshot, error == nil {
                 
-                self.emailHomeTextField.text = self.email
+                self.emailHomeTextField.text = emailA
                 
                 if let name = document.get("name") as? String {
                     self.nameHomeTextField.text = name
-                }
+                } else { self.nameHomeTextField.text = "" }
                 if let phone = document.get("phone") as? String {
                     self.phoneHomeTextField.text = phone
-                }
+                }else { self.phoneHomeTextField.text = "" }
                 if let address = document.get("address") as? String {
                     self.addressHomeTextField.text = address
-                }
+                }else { self.addressHomeTextField.text = "" }
             }
         }
         
@@ -106,66 +107,29 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func refreshHomeButtonAction(_ sender: Any) {
-        llenaDatos()
+        llenaDatos(emailA: email)
     }
     
     @IBAction func updateHomeButtonAction(_ sender: Any) {
         view.endEditing(true)
         updateHomeButton.saltoAnimacion()
+        let emailCaja = emailHomeTextField.text
+        let emailGuardado = self.email
         
-        if emailHomeTextField.text != email
+        if emailCaja != emailGuardado
         {
-            let antiguoEmail = self.email
-            let nuevoEmail = emailHomeTextField.text
-            Auth.auth().currentUser?.updateEmail(to: nuevoEmail!, completion: { (error) in
-                let alertController = UIAlertController(title: "Error", message: "No se pudo actualizar el email \(antiguoEmail), intentelo mas adelante", preferredStyle: .alert)
-                
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
+            Auth.auth().currentUser?.updateEmail(to: emailCaja!, completion: { (error) in
+                self.mostrarAlerta(title: "Error", message: "No se pudo actualizar el email \(emailGuardado), intentelo mas adelante", nameButton: "Aceptar")
             })
-            db.collection("user").document(antiguoEmail).delete()
+            db.collection("user").document(emailGuardado).delete()
             deleteUserDefaults()
-            addUserDefaults(email: nuevoEmail!)
-            if let name = nameHomeTextField.text,let phone = phoneHomeTextField.text, let address = addressHomeTextField.text{
-                db.collection("user").document(nuevoEmail!).setData([
-                "name" : name,
-                "phone" : phone,
-                "address":address
-            ])
-                let alertController = UIAlertController(title: "Actualización Exitosa", message: "Se han actualizado los datos de \(name)", preferredStyle: .alert)
-                
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "Campos Incompletos", message: "Para actualizar debe ingresar todos los datos", preferredStyle: .alert)
-                
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-            
+            addUserDefaults(email: emailCaja!)
+            guardaDatos(email: emailCaja!)
             
         }else {
-            if let name = nameHomeTextField.text,let phone = phoneHomeTextField.text, let address = addressHomeTextField.text{
-            db.collection("user").document(email).setData([
-                "name" : name,
-                "phone" : phone,
-                "address":address
-            ])
-                let alertController = UIAlertController(title: "Actualización Exitosa", message: "Se han actualizado los datos de \(name)", preferredStyle: .alert)
-                
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "Campos Incompletos", message: "Para actualizar debe ingresar todos los datos", preferredStyle: .alert)
-                
-                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
+            
+            guardaDatos(email: emailGuardado)
+            
     }
 }
     
@@ -177,6 +141,27 @@ class HomeViewController: UIViewController {
         
         db.collection("user").document(email).delete()
         
+    }
+    
+    func mostrarAlerta(title : String,message : String, nameButton : String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: nameButton, style: .default))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func guardaDatos (email: String){
+        if let name = nameHomeTextField.text,let phone = phoneHomeTextField.text, let address = addressHomeTextField.text{
+        db.collection("user").document(email).setData([
+            "name" : name,
+            "phone" : phone,
+            "address":address
+        ])
+        mostrarAlerta(title: "Actualización Exitosa", message: "Se han actualizado los datos de \(name)", nameButton: "Aceptar")
+        } else {
+            mostrarAlerta(title: "Campos Incompletos", message: "Para actualizar debe ingresar todos los datos", nameButton: "Aceptar")
+        }
     }
     
 }
