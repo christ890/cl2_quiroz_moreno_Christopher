@@ -192,7 +192,7 @@ class HomeViewController: UIViewController {
     }
     
     
-   /* @IBAction func changePassHomeButtonAction(_ sender: Any) {
+    @IBAction func changePassHomeButtonAction(_ sender: Any) {
         
         view.endEditing(true)
         changePassHomeButton.saltoAnimacion()
@@ -208,15 +208,15 @@ class HomeViewController: UIViewController {
             let pass = textField?.text
             
            
-            Auth.auth().currentUser { error in
+            Auth.auth().currentUser?.updatePassword(to: pass!) { error in
                 if error != nil{
-                let alertController = UIAlertController(title: "Atención", message: "No se ha encontrado tu email o ha ocurrido un error al enviar el email a \(email!), vuelve a intentarlo mas tarde", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Atención", message: "Ocurrió un error al actualizar su contraseña, vuelve a intentarlo mas tarde", preferredStyle: .alert)
                 
                 alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
                 
                     self.present(alertController, animated: true, completion: nil)}
                 else {
-                    let alertController = UIAlertController(title: "Envío Exitoso", message: "Se envió email de recuperación al \(email!), revisa tu bandeja de entrada o el apartado de Spam", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Cambio de Contraseña Exitoso", message: "Se cambio tu contraseña exitosamente", preferredStyle: .alert)
                     
                     alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
                     
@@ -243,6 +243,6 @@ class HomeViewController: UIViewController {
         //Para visualizar lanzar el UIAlert Controller
         present(alert, animated: true, completion: nil)
         
-    }*/
+    }
     
 }
