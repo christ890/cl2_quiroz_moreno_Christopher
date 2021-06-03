@@ -38,6 +38,7 @@ class RegisterViewController: UIViewController {
                 Auth.auth().createUser(withEmail: email, password: pass) { (result, error) in
                     if let result = result , error == nil {
                         self.navigationController?.pushViewController(HomeViewController(email: result.user.email!), animated: true)
+                        self.limpiar()
                     }else{
                         self.alerta(titleAlert: "Error", message: "Ocurrión un error en el servidor, intentelo mas tarde", textButton: "Aceptar")
                     }
@@ -65,5 +66,15 @@ class RegisterViewController: UIViewController {
         let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title:textButton, style: .default))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func limpiar(){
+        
+        nameRegisterTextField.text = ""
+        emailRegisterTextField.text = ""
+        passRegisterTextField.text = ""
+        confirmPassRegisterTextField.text = ""
+        nameRegisterTextField.becomeFirstResponder()
+        
     }
 }

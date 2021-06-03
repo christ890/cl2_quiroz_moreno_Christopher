@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var deleteHomeButton: UIButton!
     @IBOutlet weak var refreshHomeButton: UIButton!
     @IBOutlet weak var logoutHomeButton: UIButton!
+    @IBOutlet weak var changePassHomeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class HomeViewController: UIViewController {
         deleteHomeButton.redondeado()
         refreshHomeButton.redondeado()
         logoutHomeButton.redondeado()
-        
+        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.setHidesBackButton(true, animated: false)
         
         llenaDatos(emailA: email)
@@ -95,7 +96,7 @@ class HomeViewController: UIViewController {
         
         do {
                     try Auth.auth().signOut()
-                    navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)?.navigationController?.setNavigationBarHidden(true, animated: false)
                 } catch {
                     // Se ha producido un error
                     let alertController = UIAlertController(title: "Error", message: "Se ha producido un error al cerrar su sesión, vuelva a intentarlo en unos momentos", preferredStyle: .alert)
@@ -107,6 +108,7 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func refreshHomeButtonAction(_ sender: Any) {
+        refreshHomeButton.saltoAnimacion()
         llenaDatos(emailA: email)
     }
     
@@ -139,7 +141,32 @@ class HomeViewController: UIViewController {
         view.endEditing(true)
         deleteHomeButton.saltoAnimacion()
         
-        db.collection("user").document(email).delete()
+        let alert = UIAlertController(title: "Atención", message: "Esta seguro de eliminar su usuario? Se eliminaran sus datos como su acceso a la aplicación.", preferredStyle: .alert)
+        
+        
+        let deleteAlertAction = UIAlertAction(title: "Si", style: .default) { (action: UIAlertAction ) in
+            let user = Auth.auth().currentUser
+
+            user?.delete { error in
+              if error == nil {
+                self.db.collection("user").document(self.email).delete()
+                self.deleteUserDefaults()
+                let alertController = UIAlertController(title: "Usuario Eliminado", message: "Su usuario fue eliminado, si desea volver a inciar sesión, creese uno nuevo", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { (action) in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alertController, animated: true) {
+                    self.navigationController?.popViewController(animated: true)
+                }
+              } else {
+                self.mostrarAlerta(title: "Error", message: "Ocurrio un error interno, vuelva a intentarlo mas tarde.", nameButton: "Aceptar")
+              }
+            }
+        }
+        alert.addAction(deleteAlertAction)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+        present(alert, animated: true, completion: nil)
+        
         
     }
     
@@ -163,5 +190,59 @@ class HomeViewController: UIViewController {
             mostrarAlerta(title: "Campos Incompletos", message: "Para actualizar debe ingresar todos los datos", nameButton: "Aceptar")
         }
     }
+    
+    
+   /* @IBAction func changePassHomeButtonAction(_ sender: Any) {
+        
+        view.endEditing(true)
+        changePassHomeButton.saltoAnimacion()
+        
+        let alert = UIAlertController(title: "Cambio de Contraseña", message: "Ingresa tu nueva contraseña:", preferredStyle: .alert)
+        
+        //Alert Action para que guarde la tarea
+        
+        let saveAction = UIAlertAction(title: "Confirmar", style: .default) { (action: UIAlertAction) in
+            // Guardar texto de un texfield en el array y recar tabla
+            
+            let textField = alert.textFields!.first
+            let pass = textField?.text
+            
+           
+            Auth.auth().currentUser { error in
+                if error != nil{
+                let alertController = UIAlertController(title: "Atención", message: "No se ha encontrado tu email o ha ocurrido un error al enviar el email a \(email!), vuelve a intentarlo mas tarde", preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                
+                    self.present(alertController, animated: true, completion: nil)}
+                else {
+                    let alertController = UIAlertController(title: "Envío Exitoso", message: "Se envió email de recuperación al \(email!), revisa tu bandeja de entrada o el apartado de Spam", preferredStyle: .alert)
+                    
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+            }
+            
+        }
+        // Creamos el boton cancelar
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel) { (action: UIAlertAction) in
+            
+        }
+        
+        //Añadir el textfield al AlertController
+        
+        alert.addTextField { (textField: UITextField) in
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        //Para visualizar lanzar el UIAlert Controller
+        present(alert, animated: true, completion: nil)
+        
+    }*/
     
 }
